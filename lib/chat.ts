@@ -20,8 +20,8 @@ export async function sendMessage(content: string) {
         },
         { role: "user", content },
       ],
-      model: "llama3-8b-8192",
-      temperature: 0.7,
+      model: "gemma2-9b-it",
+      temperature: 0.2,
       max_tokens: 500,
     });
 
