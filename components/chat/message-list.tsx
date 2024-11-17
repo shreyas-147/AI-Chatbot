@@ -5,12 +5,21 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { Message } from "@/types/chat";
 import { EmptyState } from "./empty-state";
+import { useEffect, useRef } from "react";
 
 interface MessageListProps {
   messages: Message[];
 }
 
 export function MessageList({ messages }: MessageListProps) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
+
   return (
     <ScrollArea className="flex-1 rounded-lg border bg-background p-4 mb-4">
       <div className="space-y-4">
@@ -35,6 +44,7 @@ export function MessageList({ messages }: MessageListProps) {
           </div>
         ))}
         {messages.length === 0 && <EmptyState />}
+        <div ref={scrollRef} />
       </div>
     </ScrollArea>
   );

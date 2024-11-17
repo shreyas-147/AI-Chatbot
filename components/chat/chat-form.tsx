@@ -3,6 +3,7 @@
 import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useEffect, useRef } from "react";
 
 interface ChatFormProps {
   input: string;
@@ -17,9 +18,18 @@ export function ChatForm({
   onSubmit,
   onInputChange,
 }: ChatFormProps) {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (!isLoading && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isLoading]);
+
   return (
     <form onSubmit={onSubmit} className="flex gap-2">
       <Input
+        ref={inputRef}
         value={input}
         onChange={onInputChange}
         placeholder="Type your message..."

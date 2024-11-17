@@ -58,6 +58,10 @@ export default function Home() {
           onSubmit={handleSubmit}
           onInputChange={(e) => setInput(e.target.value)}
         />
+
+        <footer className="text-center py-4 text-sm text-muted-foreground">
+          © {new Date().getFullYear()} Shreyas Kolte. Built with ❤️ using Next.js
+        </footer>
       </div>
     </main>
   );
