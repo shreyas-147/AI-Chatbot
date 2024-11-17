@@ -21,16 +21,16 @@ export function MessageList({ messages }: MessageListProps) {
   }, [messages]);
 
   return (
-    <ScrollArea className="flex-1 rounded-lg border bg-background p-4 mb-4">
+    <ScrollArea className="flex-1 rounded-lg border bg-background/50 backdrop-blur-sm p-4 mb-4">
       <div className="space-y-4">
         {messages.map((message, i) => (
           <div
             key={i}
             className={cn(
-              "flex items-start gap-3 rounded-lg p-4",
+              "flex items-start gap-3 rounded-lg p-4 transition-colors",
               message.role === "assistant"
-                ? "bg-muted"
-                : "flex-row-reverse bg-primary/5"
+                ? "bg-secondary/50 backdrop-blur-sm"
+                : "flex-row-reverse bg-primary/10 backdrop-blur-sm"
             )}
           >
             {message.role === "assistant" ? (

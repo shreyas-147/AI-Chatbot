@@ -25,7 +25,7 @@ export async function POST(req: Request) {
         },
         ...messages,
       ],
-      model: "gemma2-9b-it",
+      model: "llama-3.1-70b-versatile",
       temperature: 0.2,
       max_tokens: 500,
     });
